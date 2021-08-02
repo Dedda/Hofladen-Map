@@ -28,7 +28,7 @@ defmodule HofladenWeb.ShopControllerTest do
   describe "index" do
     test "lists all shops", %{conn: conn} do
       conn = get(conn, Routes.shop_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+      assert json_response(conn, 200) == []
     end
   end
 

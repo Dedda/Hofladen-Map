@@ -3,11 +3,11 @@ defmodule HofladenWeb.ShopView do
   alias HofladenWeb.ShopView
 
   def render("index.json", %{shops: shops}) do
-    %{data: render_many(shops, ShopView, "shop.json")}
+    render_many(shops, ShopView, "shop.json")
   end
 
   def render("show.json", %{shop: shop}) do
-    %{data: render_one(shop, ShopView, "shop.json")}
+    render_one(shop, ShopView, "shop.json")
   end
 
   def render("shop.json", %{shop: shop}) do
