@@ -19,6 +19,12 @@ defmodule HofladenWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", HofladenWeb do
+    pipe_through :api
+
+    resources "/shops", ShopController, except: [:new, :edit, :delete]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HofladenWeb do
   #   pipe_through :api

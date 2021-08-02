@@ -133,6 +133,8 @@ defmodule Hofladen.Locations do
   """
   def get_address!(id), do: Repo.get!(Address, id)
 
+  def get_address_for_shop!(shop_id), do: Repo.one(from a in Address, where: a.shop == ^shop_id)
+
   @doc """
   Creates a address.
 

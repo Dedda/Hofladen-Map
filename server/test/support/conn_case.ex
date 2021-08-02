@@ -38,6 +38,8 @@ defmodule HofladenWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(Hofladen.Repo, {:shared, self()})
     end
 
+    Hofladen.Locations.create_country(%{code: "DE", name: "Germany", language: "EN"})
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
