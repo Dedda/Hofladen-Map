@@ -21,7 +21,8 @@ defmodule Hofladen.LocationsTest do
 
     test "list_shops/0 returns all shops" do
       shop = shop_fixture()
-      assert Locations.list_shops() == [shop]
+      assert Locations.list_shops()
+             |>Enum.member?(shop)
     end
 
     test "get_shop!/1 returns the shop with given id" do

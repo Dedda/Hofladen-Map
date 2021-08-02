@@ -11,5 +11,7 @@ defmodule Hofladen.Repo.Migrations.CreateCountries do
       timestamps()
     end
 
+    create unique_index(:countries, [:code, :language], name: :countries_code_language_unique)
+
   end
 end
