@@ -36,3 +36,4 @@ npm-debug.log
 .idea
 *.iml
 config/prod.secret.exs
+config_*.mnesia

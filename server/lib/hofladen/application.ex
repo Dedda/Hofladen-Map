@@ -6,6 +6,7 @@ defmodule Hofladen.Application do
   use Application
 
   def start(_type, _args) do
+    Hofladen.RuntimeConfig.start()
     children = [
       # Start the Ecto repository
       Hofladen.Repo,
