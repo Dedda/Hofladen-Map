@@ -7,6 +7,7 @@ defmodule Hofladen.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
+      erlc_paths: erlc_paths(),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -28,6 +29,8 @@ defmodule Hofladen.MixProject do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
+  defp erlc_paths(), do: ["erl"]
+
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
@@ -45,7 +48,7 @@ defmodule Hofladen.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:amnesia, "~> 0.2.5"},
+      {:rec_struct, "~> 0.2.0"},
     ]
   end
 

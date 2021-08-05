@@ -22,7 +22,7 @@ defmodule HofladenWeb.Router do
   scope "/api", HofladenWeb do
     pipe_through :api
 
-    resources "/shops", ShopController, except: [:new, :edit, :delete]
+    resources "/shops", ShopController, except: [:edit, :delete]
   end
 
   # Other scopes may use custom stacks.

@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :hofladen, Hofladen.Repo,
-  username: "hofladen",
-  password: "hofladen",
-  database: "hofladen_dev",
-  hostname: "localhost",
+  username: System.get_env("PGUSER") || "hofladen",
+  password: System.get_env("PGPASSWORD") || "hofladen",
+  database: System.get_env("PGDATABASE") || "hofladen_dev",
+  hostname: System.get_env("PGHOST") || "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
