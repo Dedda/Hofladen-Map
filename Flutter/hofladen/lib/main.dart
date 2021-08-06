@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hofladen/screens/settings_screen.dart';
+import 'package:hofladen/screens/shop_detail_screen.dart';
 import 'package:hofladen/screens/shop_list_screen.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/settings': (context) => const SettingsScreen(),
         '/shoplist': (context) => const ShopListScreen(),
+        '/shop': (context) => const ShopDetailScreen(),
       },
     );
   }
@@ -37,17 +39,19 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            MaterialButton(
+            ElevatedButton(
                 child: const Text('Hofläden'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/shoplist');
                 }),
-            MaterialButton(
+            SizedBox(height: 10),
+            ElevatedButton(
                 child: const Text('Settings'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/settings');
                 }),
           ],
+
         ),
       ),
     );

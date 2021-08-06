@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hofladen/ui/shop_list.dart';
 
 @immutable
 class ShopListScreen extends StatelessWidget {
@@ -9,12 +10,7 @@ class ShopListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Hofläden')),
-      body: Column(
-        children: const <Widget>[
-          Text('Hof 1'),
-          Text('Hof 2'),
-        ],
-      ),
+      body: ShopList(),
     );
   }
 

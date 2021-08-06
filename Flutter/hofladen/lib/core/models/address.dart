@@ -1,5 +1,3 @@
-import 'package:sprintf/sprintf.dart';
-
 class Address {
   final String address;
   final String city;
@@ -18,7 +16,7 @@ class Address {
   });
 
   String get formatted =>
-      sprintf('%s, %s %s, %s', [address, zipCode, city, country]);
+      address + ', ' + zipCode + ' ' + city + ', ' + country;
 
   @override
   bool operator ==(Object other) =>
