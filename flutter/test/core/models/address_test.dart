@@ -5,7 +5,7 @@ import 'package:hofladen/core/models/address.dart';
 void main() {
   test('Correctly parses from json dict', () {
     final data = {
-      'address': 'Test road 1',
+      'street': 'Test road 1',
       'city': 'Test city',
       'zipcode': '99999',
       'country': 'US',
