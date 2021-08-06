@@ -16,7 +16,7 @@ class Address {
   });
 
   String get formatted =>
-      address + ', ' + zipCode + ' ' + city + ', ' + country;
+      '$address, $zipCode $city, $country';
 
   @override
   bool operator ==(Object other) =>
@@ -41,7 +41,7 @@ class Address {
 
   factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
-      address: json['address'],
+      address: json['street'],
       city: json['city'],
       zipCode: json['zipcode'],
       country: json['country'],

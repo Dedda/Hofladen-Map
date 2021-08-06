@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hofladen/core/api.dart';
 import 'package:hofladen/core/models/address.dart';
 import 'package:hofladen/core/models/shop.dart';
 
@@ -8,7 +9,7 @@ class ShopList extends StatefulWidget {
 }
 
 class _ShopListState extends State<ShopList> {
-  List<Shop>? _shops;
+  List<ShopHeader>? _shops;
 
   @override
   Widget build(BuildContext context) {
@@ -40,41 +41,16 @@ class _ShopListState extends State<ShopList> {
   }
 
   void loadShops() async {
-    await Future.delayed(const Duration(seconds: 1));
+    final shops = await OnlineApi().loadShopList();
     setState(() {
-      _shops = [
-        Shop(
-            id: '1',
-            name: 'Testshop 1',
-            address: Address(
-                address: '',
-                city: '',
-                zipCode: '',
-                country: '',
-                lat: 0.0,
-                lon: 0.0),
-            openingHours: [],
-            openingHoursHolidays: []),
-        Shop(
-            id: '2',
-            name: 'Testshop 2',
-            address: Address(
-                address: '',
-                city: '',
-                zipCode: '',
-                country: '',
-                lat: 0.0,
-                lon: 0.0),
-            openingHours: [],
-            openingHoursHolidays: []),
-      ];
+      _shops = shops;
     });
   }
 }
 
 @immutable
 class _ShopListItem extends StatelessWidget {
-  final Shop shop;
+  final ShopHeader shop;
 
   const _ShopListItem({Key? key, required this.shop}) : super(key: key);
 

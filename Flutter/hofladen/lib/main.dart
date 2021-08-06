@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/settings': (context) => const SettingsScreen(),
         '/shoplist': (context) => const ShopListScreen(),
-        '/shop': (context) => const ShopDetailScreen(),
+        '/shop': (context) => ShopDetailScreen(),
       },
     );
   }
