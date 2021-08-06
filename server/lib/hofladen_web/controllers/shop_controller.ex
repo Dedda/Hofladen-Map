@@ -3,6 +3,7 @@ defmodule HofladenWeb.ShopController do
 
   alias Hofladen.Locations
   alias Hofladen.Locations.Shop
+  alias Hofladen.Timetables
 
   action_fallback HofladenWeb.FallbackController
 
@@ -24,7 +25,25 @@ defmodule HofladenWeb.ShopController do
     shop = Locations.get_shop!(id)
     address = Locations.get_address_for_shop!(shop.id)
     country = Locations.country_by_code_and_language!(address.country, "EN")
-    render(conn, "shop_with_address.json", %{shop: shop, address: address, country: country})
+    opening_hours = case Timetables.opening_hours_for_shop(shop.id) do
+      {:ok, oh} -> oh
+      _ -> []
+    end
+    opening_hours_holidays = case Timetables.opening_hours_holidays_for_shop(shop.id) do
+      {:ok, oh} -> oh
+      _ -> []
+    end
+    render(
+      conn,
+      "shop_with_address_and_times.json",
+      %{
+        shop: shop,
+        address: address,
+        country: country,
+        opening_hours: opening_hours,
+        opening_hours_holidays: opening_hours_holidays,
+      }
+    )
   end
 
   def update(conn, %{"id" => id, "shop" => shop_params}) do

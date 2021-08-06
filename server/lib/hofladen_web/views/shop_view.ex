@@ -10,19 +10,36 @@ defmodule HofladenWeb.ShopView do
     render_one(shop, ShopView, "shop.json")
   end
 
-  def render("shop_with_address.json", %{shop: shop, address: address, country: country}) do
-    %{id: shop.id,
+  def render(
+        "shop_with_address_and_times.json",
+        %{
+          shop: shop,
+          address: address,
+          country: country,
+          opening_hours: opening_hours,
+          opening_hours_holidays: opening_hours_holidays,
+        }
+      ) do
+    %{
+      id: shop.id,
       name: shop.name,
       address: %{
         street: address.address,
         zipcode: address.zipcode,
         city: address.city,
         country: country.name,
-    }}
+        lat: 0.0,
+        lon: 0.0,
+      },
+      opening_hours: [],
+      opening_hours_holidays: [],
+    }
   end
 
   def render("shop.json", %{shop: shop}) do
-    %{id: shop.id,
-      name: shop.name}
+    %{
+      id: shop.id,
+      name: shop.name
+    }
   end
 end

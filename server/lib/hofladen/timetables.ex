@@ -37,6 +37,8 @@ defmodule Hofladen.Timetables do
   """
   def get_opening_hours!(id), do: Repo.get!(OpeningHours, id)
 
+  def opening_hours_for_shop(shop_id), do: Repo.all(from oh in OpeningHours, where: oh.shop == ^shop_id)
+
   @doc """
   Creates a opening_hours.
 
@@ -132,6 +134,8 @@ defmodule Hofladen.Timetables do
 
   """
   def get_opening_hours_holidays!(id), do: Repo.get!(OpeningHoursHolidays, id)
+
+  def opening_hours_holidays_for_shop(shop_id), do: Repo.all(from oh in OpeningHours, where: oh.shop == ^shop_id)
 
   @doc """
   Creates a opening_hours_holidays.

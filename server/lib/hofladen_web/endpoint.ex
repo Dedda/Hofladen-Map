@@ -50,5 +50,6 @@ defmodule HofladenWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug CORSPlug, origin: ["*"], methods: ["GET", "HEAD"], headers: ["*"]
   plug HofladenWeb.Router
 end
