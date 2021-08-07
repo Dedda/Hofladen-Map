@@ -18,12 +18,21 @@ class _ShopListState extends State<ShopList> {
       loadShops();
       return Loading();
     } else {
-      return ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: _shops!.length,
-        itemBuilder: (context, index) {
-          return _ShopListItem(shop: _shops![index]);
-        },
+      return Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(top: 8),
+            child: Text('${_shops!.length} Hofläden gefunden', style: TextStyle(fontSize: 8)),
+          ),
+          ListView.builder(
+            padding: const EdgeInsets.all(8),
+            itemCount: _shops!.length,
+            itemBuilder: (context, index) {
+              return _ShopListItem(shop: _shops![index]);
+            },
+            shrinkWrap: true,
+          ).build(context),
+        ],
       );
     }
   }

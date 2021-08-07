@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @immutable
 class Loading extends StatelessWidget {
@@ -15,7 +16,7 @@ class Loading extends StatelessWidget {
           children: <Widget>[
             const CircularProgressIndicator(),
             const SizedBox(width: 8),
-            const Text('Loading...'),
+            Text(AppLocalizations.of(context)!.loading),
           ],
         ),
       ],

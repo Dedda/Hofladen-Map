@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hofladen/screens/settings_screen.dart';
 import 'package:hofladen/screens/shop_detail_screen.dart';
 import 'package:hofladen/screens/shop_list_screen.dart';
@@ -28,6 +30,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('de', ''),
+      ],
       home: const HomePage(),
       routes: {
         '/settings': (context) => const SettingsScreen(),
@@ -45,7 +57,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Hofladen Map')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.appTitle)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hofladen/core/models/address.dart';
 
 @immutable
@@ -10,7 +11,7 @@ class AddressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [
-      const Text('Adresse:', style: TextStyle(fontWeight: FontWeight.bold))
+      Text(AppLocalizations.of(context)!.addressHeader, style: TextStyle(fontWeight: FontWeight.bold))
     ];
     children.addAll(address.formattedLines.map((line) => Text(line)));
     return Column(
