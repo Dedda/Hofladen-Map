@@ -12,6 +12,9 @@ class OpeningHoursView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (openingHours.isEmpty) {
+      return Container();
+    }
     List<Widget> children = [
       Text(AppLocalizations.of(context)!.openingHoursHeader,
           style: TextStyle(fontWeight: FontWeight.bold))

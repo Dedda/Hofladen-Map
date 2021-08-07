@@ -11,5 +11,6 @@
   "thu": "Donnerstag",
   "fri": "Freitag",
   "sat": "Samstag",
-  "sun": "Sonntag"
+  "sun": "Sonntag,",
+  "foundNShops": "{number, plural, zero{Keine Hofläden gefunden} one{1 Hofladen gefunden} other{{number} Hofläden gefunden}}"
 }
