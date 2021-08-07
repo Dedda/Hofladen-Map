@@ -1,0 +1,9 @@
+{
+  "appTitle": "Hofladen Map",
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Text for showing on loading screens."
+  },
+  "shopListTitle": "Shops",
+  "addressHeader": "Address"
+}
