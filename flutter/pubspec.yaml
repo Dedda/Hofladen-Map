@@ -21,9 +21,10 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
-  http: ^0.13.3
+  collection: ^1.14.13
   cupertino_icons: ^1.0.2
+  http: ^0.13.3
+  intl: ^0.17.0
   logger: ^1.0.0
 
 dev_dependencies:

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -15,11 +16,15 @@ class OpeningHoursView extends StatelessWidget {
     if (openingHours.isEmpty) {
       return Container();
     }
+    final Map<int, List<OpeningHours>> groupedByDay =
+        groupBy(openingHours, (OpeningHours oh) => oh.day);
     List<Widget> children = [
       Text(AppLocalizations.of(context)!.openingHoursHeader,
-          style: TextStyle(fontWeight: FontWeight.bold))
+          style: TextStyle(fontWeight: FontWeight.bold)),
+      SizedBox(height: 8),
     ];
-    children.addAll(openingHours.map((oh) => _DayRow(hours: oh)));
+    children.addAll(groupedByDay.entries
+        .map((entry) => _DayRow(day: entry.key, hours: entry.value)));
     return Column(
       children: children,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,18 +34,22 @@ class OpeningHoursView extends StatelessWidget {
 
 @immutable
 class _DayRow extends StatelessWidget {
-  final OpeningHours hours;
+  final int day;
+  final List<OpeningHours> hours;
 
-  const _DayRow({Key? key, required this.hours}) : super(key: key);
+  const _DayRow({Key? key, required this.day, required this.hours})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> children = [
+      Text('${_dayFromInt(context, day)}', style: TextStyle(fontSize: 12))
+    ];
+    children.addAll(hours.map<Widget>((OpeningHours oh) =>
+        Text('${oh.opens.format(context)} - ${oh.closes.format(context)}')));
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-              '${_dayFromInt(context, hours.day)}: ${hours.opens.format(context)} - ${hours.closes.format(context)}')
-        ]);
+        children: children.toList(growable: false));
   }
 
   String _dayFromInt(final BuildContext context, final int i) {
