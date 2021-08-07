@@ -14,5 +14,11 @@
   "thu": "Thursday",
   "fri": "Friday",
   "sat": "Saturday",
-  "sun": "Sunday"
+  "sun": "Sunday",
+  "foundNShops": "{number, plural, zero{Found no shops} one{Found one shop} other{Found {number} shops}}",
+  "@foundNShops": {
+    "placeholders": {
+      "number": {}
+    }
+  }
 }

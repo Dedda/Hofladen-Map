@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hofladen/core/api.dart';
-import 'package:hofladen/core/models/address.dart';
 import 'package:hofladen/core/models/shop.dart';
 import 'package:hofladen/ui/loading.dart';
 
@@ -22,7 +22,7 @@ class _ShopListState extends State<ShopList> {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(top: 8),
-            child: Text('${_shops!.length} Hofläden gefunden', style: TextStyle(fontSize: 8)),
+            child: Text(AppLocalizations.of(context)!.foundNShops(_shops!.length), style: TextStyle(fontSize: 12)),
           ),
           ListView.builder(
             padding: const EdgeInsets.all(8),
