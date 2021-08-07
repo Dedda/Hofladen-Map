@@ -32,9 +32,6 @@ class OnlineApi implements Api {
   @override
   Future<Shop> loadShopDetails(final String shopId) async {
     final response = await _httpGet(_urlFor('/shops/$shopId'));
-    print('===');
-    print(response.body);
-    print('===');
     final Map<String, dynamic> json = jsonDecode(response.body);
     return Shop.fromJson(json);
   }

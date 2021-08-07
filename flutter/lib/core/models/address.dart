@@ -18,6 +18,9 @@ class Address {
   String get formatted =>
       '$address, $zipCode $city, $country';
 
+  List<String> get formattedLines =>
+      [address, '$zipCode $city', country];
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
