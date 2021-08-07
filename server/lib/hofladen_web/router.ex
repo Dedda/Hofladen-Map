@@ -11,7 +11,6 @@ defmodule HofladenWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-#    plug CORSPlug, origin: ["*"]
   end
 
   scope "/", HofladenWeb do
@@ -25,11 +24,6 @@ defmodule HofladenWeb.Router do
 
     resources "/shops", ShopController, except: [:edit, :delete]
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", HofladenWeb do
-  #   pipe_through :api
-  # end
 
   # Enables LiveDashboard only for development
   #

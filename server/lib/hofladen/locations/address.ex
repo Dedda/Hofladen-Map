@@ -21,8 +21,8 @@ defmodule Hofladen.Locations.Address do
   @doc false
   def changeset(address, attrs) do
     address
-    |> cast(attrs, [:lat, :lon, :country, :zipcode, :city, :address])
-    |> validate_required([:lat, :lon, :country, :zipcode, :city, :address])
+    |> cast(attrs, [:lat, :lon, :country, :zipcode, :city, :address, :shop])
+    |> validate_required([:lat, :lon, :country, :zipcode, :city, :address, :shop])
   end
 
   def formatted_address(%Address{} = address) do
