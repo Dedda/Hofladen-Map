@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hofladen/core/api.dart';
 import 'package:hofladen/core/models/address.dart';
 import 'package:hofladen/core/models/shop.dart';
+import 'package:hofladen/ui/loading.dart';
 
 class ShopList extends StatefulWidget {
   @override
@@ -15,20 +16,7 @@ class _ShopListState extends State<ShopList> {
   Widget build(BuildContext context) {
     if (_shops == null) {
       loadShops();
-      return Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const CircularProgressIndicator(),
-              const SizedBox(width: 8),
-              const Text('Loading...'),
-            ],
-          ),
-        ],
-      ));
+      return Loading();
     } else {
       return ListView.builder(
         padding: const EdgeInsets.all(8),

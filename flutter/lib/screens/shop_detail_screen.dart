@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hofladen/core/api.dart';
+import 'package:hofladen/core/models/address.dart';
 import 'package:hofladen/core/models/shop.dart';
+import 'package:hofladen/ui/address_view.dart';
+import 'package:hofladen/ui/loading.dart';
 
 class ShopDetailScreen extends StatefulWidget {
   @override
@@ -19,25 +22,19 @@ class _ShopDetailScreen extends State<ShopDetailScreen> {
 
       return Scaffold(
         appBar: AppBar(title: Text(shopHeader.name)),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const CircularProgressIndicator(),
-                const SizedBox(width: 8),
-                const Text('Loading...'),
-              ],
-            ),
-          ],
-        )),
+        body: Loading(),
       );
     } else {
       return Scaffold(
         appBar: AppBar(title: Text(_shop!.name)),
-        body: Text('ID: ${_shop!.id}'),
+        body: Container(
+          margin: const EdgeInsets.all(8),
+          child: Column(
+            children: <Widget>[
+              AddressView(address: _shop!.address),
+            ],
+          ),
+        ),
       );
     }
   }
