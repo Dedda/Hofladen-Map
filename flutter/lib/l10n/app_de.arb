@@ -1,6 +1,15 @@
 {
+  "code": "DE",
   "appTitle": "Hofladen-Karte",
   "loading": "Lade...",
   "shopListTitle": "Hofläden",
-  "addressHeader": "Adresse"
+  "addressHeader": "Adresse",
+  "openingHoursHeader": "Öffnungszeiten",
+  "mon": "Montag",
+  "tue": "Dienstag",
+  "wed": "Mittwoch",
+  "thu": "Donnerstag",
+  "fri": "Freitag",
+  "sat": "Samstag",
+  "sun": "Sonntag"
 }

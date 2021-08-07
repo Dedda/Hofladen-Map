@@ -21,14 +21,12 @@ class Shop {
       id: json['id'],
       name: json['name'],
       address: Address.fromJson(json['address']),
-      openingHours: [],
-      openingHoursHolidays: [],
-      // openingHours: json['opening_hours']
-      //     .map((ooJson) => OpeningHours.fromJson(ooJson))
-      //     .toList(growable: false) as List<OpeningHours>,
-      // openingHoursHolidays: json['opening_hours']
-      //     .map((oohJson) => OpeningHoursHolidays.fromJson(oohJson))
-      //     .toList(growable: false) as List<OpeningHoursHolidays>,
+      openingHours: json['opening_hours']
+          .map<OpeningHours>((ooJson) => OpeningHours.fromJson(ooJson))
+          .toList(growable: false),
+      openingHoursHolidays: json['opening_hours_holidays']
+          .map<OpeningHoursHolidays>((oohJson) => OpeningHoursHolidays.fromJson(oohJson))
+          .toList(growable: false) as List<OpeningHoursHolidays>,
     );
   }
 }

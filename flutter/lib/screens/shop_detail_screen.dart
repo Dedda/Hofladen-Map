@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hofladen/core/api.dart';
-import 'package:hofladen/core/models/address.dart';
 import 'package:hofladen/core/models/shop.dart';
 import 'package:hofladen/ui/address_view.dart';
 import 'package:hofladen/ui/loading.dart';
+import 'package:hofladen/ui/opening_hours_view.dart';
 
 class ShopDetailScreen extends StatefulWidget {
   @override
@@ -30,8 +30,11 @@ class _ShopDetailScreen extends State<ShopDetailScreen> {
         body: Container(
           margin: const EdgeInsets.all(8),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               AddressView(address: _shop!.address),
+              SizedBox(height: 12),
+              OpeningHoursView(openingHours: _shop!.openingHours),
             ],
           ),
         ),
