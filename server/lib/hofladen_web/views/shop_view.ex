@@ -1,6 +1,8 @@
 defmodule HofladenWeb.ShopView do
   use HofladenWeb, :view
   alias HofladenWeb.ShopView
+  alias Hofladen.Timetables.OpeningHours
+  alias Hofladen.Timetables.OpeningHoursHolidays
 
   def render("index.json", %{shops: shops}) do
     render_many(shops, ShopView, "shop.json")
@@ -31,8 +33,10 @@ defmodule HofladenWeb.ShopView do
         lat: 0.0,
         lon: 0.0,
       },
-      opening_hours: [],
-      opening_hours_holidays: [],
+      opening_hours: opening_hours
+                     |> Enum.map(&opening_hours_to_map/1),
+      opening_hours_holidays: opening_hours_holidays
+                              |> Enum.map(&opening_hours_holidays_to_map/1),
     }
   end
 
@@ -40,6 +44,22 @@ defmodule HofladenWeb.ShopView do
     %{
       id: shop.id,
       name: shop.name
+    }
+  end
+
+  defp opening_hours_to_map(%OpeningHours{opens: opens, closes: closes, day: day}) do
+    %{
+      opens: "#{opens.hour}:#{opens.minute}",
+      closes: "#{closes.hour}:#{closes.minute}",
+      day: day,
+    }
+  end
+
+  defp opening_hours_holidays_to_map(%OpeningHoursHolidays{opens: opens, closes: closes, day: day}) do
+    %{
+      opens: "#{opens.hour}:#{opens.minute}",
+      closes: "#{closes.hour}:#{closes.minute}",
+      day: "#{day.year}-#{day.month}-#{day.day}",
     }
   end
 end

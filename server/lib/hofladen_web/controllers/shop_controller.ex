@@ -25,14 +25,8 @@ defmodule HofladenWeb.ShopController do
     shop = Locations.get_shop!(id)
     address = Locations.get_address_for_shop!(shop.id)
     country = Locations.country_by_code_and_language!(address.country, "EN")
-    opening_hours = case Timetables.opening_hours_for_shop(shop.id) do
-      {:ok, oh} -> oh
-      _ -> []
-    end
-    opening_hours_holidays = case Timetables.opening_hours_holidays_for_shop(shop.id) do
-      {:ok, oh} -> oh
-      _ -> []
-    end
+    opening_hours = Timetables.opening_hours_for_shop(shop.id)
+    opening_hours_holidays = Timetables.opening_hours_holidays_for_shop(shop.id)
     render(
       conn,
       "shop_with_address_and_times.json",

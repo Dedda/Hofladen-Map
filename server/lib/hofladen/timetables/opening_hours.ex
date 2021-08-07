@@ -16,7 +16,7 @@ defmodule Hofladen.Timetables.OpeningHours do
   @doc false
   def changeset(opening_hours, attrs) do
     opening_hours
-    |> cast(attrs, [:opens, :closes, :day])
-    |> validate_required([:opens, :closes, :day])
+    |> cast(attrs, [:opens, :closes, :day, :shop])
+    |> validate_required([:opens, :closes, :day, :shop])
   end
 end
